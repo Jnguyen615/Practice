@@ -9,8 +9,12 @@ const MountDisplay = ({ mounts, openModal, favoriteMounts, toggleFavoriteMount, 
     navigate('/:id')
   };
 
+  const handleFavoriteToggle = (mount) => {
+    toggleFavoriteMount(mount);
+  };
+
   const mountCards = mounts.map((mount) => (
-    <div key={mount.id}>
+    <div key={`${mount.id}-${mount.name}`} >
       <MountCard
         id={mount.id}
         name={mount.name}
@@ -20,6 +24,8 @@ const MountDisplay = ({ mounts, openModal, favoriteMounts, toggleFavoriteMount, 
         favoriteMounts={favoriteMounts}
         setFavoriteMounts={setFavoriteMounts}
         toggleFavoriteMount={(id) => toggleFavoriteMount(id)} 
+        mount={mount}
+        onFavoriteToggle={() => handleFavoriteToggle(mount)}
         />
     </div>
   ));
