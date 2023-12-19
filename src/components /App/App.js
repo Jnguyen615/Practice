@@ -55,17 +55,17 @@ function App() {
     const isFavorited = favoriteMounts.some((favMount) => favMount.id === mount.id);
   
     if (isFavorited) {
-      setFavoriteMounts((prev) =>
-        prev.filter((favMount) => favMount.id !== mount.id)
-      );
+      const updatedFavorites = favoriteMounts.filter((favMount) => favMount.id !== mount.id);
+      setFavoriteMounts(updatedFavorites);
       console.log('Removed from Favorites:', mount);
-      console.log('Updated Favorites:', favoriteMounts);
+      console.log('Updated Favorites:', updatedFavorites);
     } else {
       setFavoriteMounts((prevFavorites) => [...prevFavorites, mount]);
       console.log('Added to Favorites:', mount);
       console.log('Updated Favorites:', [...favoriteMounts, mount]);
     }
   };
+  
   
   
     
