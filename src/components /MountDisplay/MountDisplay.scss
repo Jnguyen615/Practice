@@ -1,3 +1,5 @@
-// .mounts-container {
-//   background-image: url('../src/Images/ffxivwall1.webp')
-// }
+.mounts-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px
+}

@@ -1,5 +1,6 @@
-import "./MountCard.scss";
-import PropTypes from 'prop-types'
+import React from 'react';
+import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
+import PropTypes from 'prop-types';
 
 const MountCard = ({
   id,
@@ -7,30 +8,27 @@ const MountCard = ({
   image,
   description,
   onClick,
-  openModal,
   favoriteMounts,
-  setFavoriteMounts,
   toggleFavoriteMount,
 }) => {
-  const handleCardClick = () => {
-    onClick(id); // Open modal when the card is clicked
-  };
-
-  
-
-  const handleFavoriteToggle = (e) => {
-    e.stopPropagation(); // Prevent event bubbling to the card click
-    toggleFavoriteMount(id); // Toggle favorite when the favorite button is clicked
-  };
+  const isFavorite = favoriteMounts.includes(id);
 
   return (
-    <div className="mount-card" onClick={handleCardClick}>
-      <h3>{name}</h3>
-      <p>{description}</p>
-      <img id={id} src={image} alt={name} className="mount-card-image" />
-      <button onClick={handleFavoriteToggle}>
-        {favoriteMounts ? 'Remove from Favorites' : 'Add to Favorites'}
-      </button>
+    <div className="mount-card">
+      <h3 className='mount-name'>{name}</h3>
+      <img
+        id={id}
+        src={image}
+        alt={name}
+        className="mount-card-image"
+        onClick={onClick}
+      />
+      <p className='mount-description'>{description}</p>
+      <FavoriteIcon
+        id={id}
+        isFavorite={isFavorite}
+        toggleFavoriteMount={() => toggleFavoriteMount(id)}
+      />
     </div>
   );
 };
@@ -45,4 +43,4 @@ MountCard.propTypes = {
   toggleFavoriteMount: PropTypes.func.isRequired,
 };
 
-export default MountCard
+export default MountCard;

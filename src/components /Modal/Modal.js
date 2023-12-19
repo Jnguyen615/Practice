@@ -24,8 +24,8 @@ const Modal = ({ closeModal, selectedMountId, mounts }) => {
       {mount && (
         <div>
           <h3>{mount.name}</h3>
-          <p>{mount.enhanced_description}</p>
           <img src={mount.image} alt={mount.name} className="modal-image" />
+          <p className='enhanced-description'>{mount.enhanced_description}</p>
         </div>
       )}
     </div>

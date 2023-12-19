@@ -10,24 +10,22 @@ const MountDisplay = ({ mounts, openModal, favoriteMounts, toggleFavoriteMount, 
   };
 
   const mountCards = mounts.map((mount) => (
-    <div key={mount.id} onClick={() => handleCardClick(mount.id)}>
+    <div key={mount.id}>
       <MountCard
         id={mount.id}
         name={mount.name}
-        image={mount.image}
+        image={mount.image} onClick={() => handleCardClick(mount.id)}
         description={mount.description}
         openModal={openModal}
-        onClick={() => handleCardClick(mount.id)}
         favoriteMounts={favoriteMounts}
-        setFavoriteMoutns={setFavoriteMounts}
-        toggleFavoriteMount={toggleFavoriteMount}
-      />
+        setFavoriteMounts={setFavoriteMounts}
+        toggleFavoriteMount={(id) => toggleFavoriteMount(id)} 
+        />
     </div>
   ));
 
   return (
     <div className="mounts-container">
-      <h2>Mounts here!</h2>
       {mountCards}
     </div>
   );
