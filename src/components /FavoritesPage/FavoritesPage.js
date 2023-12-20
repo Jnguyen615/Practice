@@ -1,19 +1,19 @@
-
 import React from 'react';
 import MountCard from '../MountCard/MountCard';
 
 const FavoritesPage = ({ favoriteMounts, toggleFavoriteMount }) => {
-  const displayFavoriteMounts = favoriteMounts.map(mount => (
+  const displayFavoriteMounts = favoriteMounts.map((mount) => (
     <MountCard
-    key={`${mount.id}-${mount.name}`} 
-    id={mount.id}
-    name={mount.name}
-    image={mount.image}
-    description={mount.description}
-    favoriteMounts={favoriteMounts}
-    toggleFavoriteMount={toggleFavoriteMount}
+      key={`${mount.id}-${mount.name}`} 
+      id={mount.id}
+      name={mount.name}
+      image={mount.image}
+      description={mount.description}
+      favoriteMounts={favoriteMounts}
+      toggleFavoriteMount={toggleFavoriteMount}
+      isFavoritesPage={true} 
     />
-    ));
+  ));
 
   return (
     <div className='favorites-page'>
