@@ -57,12 +57,10 @@ function App() {
     if (isFavorited) {
       const updatedFavorites = favoriteMounts.filter((favMount) => favMount.id !== mount.id);
       setFavoriteMounts(updatedFavorites);
-      console.log('Removed from Favorites:', mount);
-      console.log('Updated Favorites:', updatedFavorites);
+      // console.log('Removed from Favorites:', mount);
     } else {
       setFavoriteMounts((prevFavorites) => [...prevFavorites, mount]);
       console.log('Added to Favorites:', mount);
-      console.log('Updated Favorites:', [...favoriteMounts, mount]);
     }
   };
   
@@ -101,6 +99,8 @@ function App() {
           selectedMountId={selectedMountId}
           mounts={mounts}
           toggleFavoriteMount={toggleFavoriteMount}
+          favoriteMounts={favoriteMounts}
+          setFavoriteMounts={setFavoriteMounts}
         />
       }
     />

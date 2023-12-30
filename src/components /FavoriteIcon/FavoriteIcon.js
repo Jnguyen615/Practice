@@ -1,17 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const FavoriteIcon = ({ toggleFavoriteMount, id }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+const FavoriteIcon = ({ toggleFavoriteMount, isFavorite }) => {
+  const [isFavorited, setIsFavorited] = useState(isFavorite);
 
     const handleClick = (id) => {
-      setIsFavorite(!isFavorite)
+      setIsFavorited(prev => !prev)
       toggleFavoriteMount();
     };
-  
 
   return (
     <div onClick={handleClick}>
-      {isFavorite ? (
+      {isFavorited ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

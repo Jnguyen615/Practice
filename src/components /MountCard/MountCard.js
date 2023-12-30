@@ -2,54 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 
-
-// const MountCard = ({
-//   id,
-//   name,
-//   image,
-//   description,
-//   mount,
-//   onClick,
-//   favoriteMounts,
-//   toggleFavoriteMount,
-//   showFavoriteIcon,
-// }) => {
-
-//   const isFavorite = favoriteMounts.includes(id);
-
-//   const handleOnClick = () => {
-//     if (onClick) {
-//       onClick();
-//     }
-//   };
-
-//   return (
-//     <div className="mount-card">
-//       {/* ... existing code ... */}
-//       {showFavoriteIcon && ( // Conditionally render the FavoriteIcon component
-//         <FavoriteIcon
-//           id={id}
-//           isFavorite={isFavorite}
-//           toggleFavoriteMount={() => toggleFavoriteMount(mount)}
-//         />
-//       )}
-//     </div>
-//   );
-
-// };
-
-// MountCard.propTypes = {
-//   id: PropTypes.number.isRequired,
-//   name: PropTypes.string.isRequired,
-//   image: PropTypes.string.isRequired,
-//   description: PropTypes.string.isRequired,
-//   onClick: PropTypes.func,
-//   favoriteMounts: PropTypes.array.isRequired,
-//   toggleFavoriteMount: PropTypes.func.isRequired,
-// };
-
-// export default MountCard;
-
 const MountCard = ({
   id,
   name,
@@ -59,7 +11,7 @@ const MountCard = ({
   onClick,
   favoriteMounts,
   toggleFavoriteMount,
-  isFavoritesPage
+  isFavoritesPage,
 }) => {
   const isFavorite = favoriteMounts.some((favMount) => favMount.id === id); // Change includes to some
 
@@ -67,6 +19,10 @@ const MountCard = ({
     if (onClick) {
       onClick();
     }
+  };
+
+  const handleToggleFavorite = () => {
+    toggleFavoriteMount(mount); // Calls the function to toggle the mount's favorite status
   };
 
   return (
@@ -83,8 +39,8 @@ const MountCard = ({
       {!isFavoritesPage && ( // Conditionally render the FavoriteIcon except on the FavoritesPage
         <FavoriteIcon
           id={id}
-          isFavorite={favoriteMounts.includes(id)}
-          toggleFavoriteMount={() => toggleFavoriteMount({ id, name, image, description })}
+          isFavorite={isFavorite}
+          toggleFavoriteMount={handleToggleFavorite}
         />
       )}
     </div>
