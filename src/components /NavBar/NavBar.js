@@ -13,7 +13,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="nav-side-bar">
+    <div className="nav-bar">
     <button onClick={handleFavoritesClick}>My Mounts</button>
     </div>
   );

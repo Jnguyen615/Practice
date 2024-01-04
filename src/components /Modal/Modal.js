@@ -1,34 +1,40 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from 'react-router-dom';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 
-const Modal = ({ closeModal, selectedMountId, mounts, favoriteMounts, toggleFavoriteMount }) => {
-  const navigate = useNavigate();
+const Modal = ({ closeModal, mounts, favoriteMounts, toggleFavoriteMount }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const mountId = parseInt(id)
 
-  const mount = mounts.find(mount => mount.id === selectedMountId);
-  const isFavorite = favoriteMounts.some(favMount => favMount.id === selectedMountId);
+   const mount = mounts.find((mount) => mount.id === mountId);
+  const isFavorite = favoriteMounts.some((favMount) => favMount.id === mountId);
 
   const handleToggleFavorite = () => {
-    toggleFavoriteMount(mount); // Call the function to toggle favorite status
+    toggleFavoriteMount(mount);
+  };
+
+  const handleModalClose = () => {
+    closeModal();
+    navigate('/'); // Navigate back to the main display upon closing the modal
   };
 
   return (
     <div className="modal">
-      <button onClick={closeModal}>
+      <button onClick={handleModalClose}>
         <i className="fa fa-close"></i>
       </button>
+      <FavoriteIcon
+        id={id}
+        isFavorite={isFavorite}
+        toggleFavoriteMount={handleToggleFavorite}
+        mount={mount}
+        favoriteMounts={favoriteMounts || []}
+      />
       {mount && (
-        <div>
-          <h3>{mount.name}</h3>
+        <div className='modal-container'>
+          <h3 className='mount-name'>{mount.name}</h3>
           <img src={mount.image} alt={mount.name} className="modal-image" />
           <p className='enhanced-description'>{mount.enhanced_description}</p>
-          <FavoriteIcon
-            id={selectedMountId}
-            isFavorite={isFavorite}
-            toggleFavoriteMount={handleToggleFavorite}
-            mount={mount}
-            favoriteMounts={favoriteMounts || []}
-          />
         </div>
       )}
     </div>

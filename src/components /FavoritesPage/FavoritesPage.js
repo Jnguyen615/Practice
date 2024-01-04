@@ -28,7 +28,7 @@ const FavoritesPage = ({ favoriteMounts, toggleFavoriteMount }) => {
         {" "}
         <i className="fa fa-close"></i>{" "}
       </button>
-      <h1>Favorites!</h1>
+      <h1 className='my-mounts-title'>My Mounts!</h1>
       {!displayFavoriteMounts.length && (
         <p className='no-favorites'>You don't have any favorites yet.</p>
       )}

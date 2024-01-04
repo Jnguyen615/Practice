@@ -53,7 +53,7 @@ const FavoriteIcon = ({ toggleFavoriteMount, isFavorite }) => {
   };
 
   return (
-    <div onClick={handleClick}>
+    <div className='favorite-icon' onClick={handleClick}>
       {isFavorited ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"

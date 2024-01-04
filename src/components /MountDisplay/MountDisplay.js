@@ -1,12 +1,29 @@
 import "./MountDisplay.scss";
 import MountCard from "../MountCard/MountCard";
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import Modal from '../Modal/Modal'
+import NavBar from '../NavBar/NavBar';
 
-const MountDisplay = ({ mounts, openModal, favoriteMounts, toggleFavoriteMount, setFavoriteMounts }) => {
+const MountDisplay = ({ mounts, favoriteMounts, toggleFavoriteMount, setFavoriteMounts }) => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMountId, setSelectedMountId] = useState(null);
   const navigate = useNavigate()
+
+  const openModal = (mountId) => {
+    setSelectedMountId(mountId);
+    setIsModalOpen(true);
+    navigate(`/mount/${mountId}`)
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    navigate('/')
+  };
+
   const handleCardClick = (mountId) => {
     openModal(mountId)
-    navigate('/mount/:id')
   };
 
   const handleFavoriteToggle = (mount) => {
@@ -20,9 +37,9 @@ const MountDisplay = ({ mounts, openModal, favoriteMounts, toggleFavoriteMount, 
         name={mount.name}
         image={mount.image} onClick={() => handleCardClick(mount.id)}
         description={mount.description}
-        openModal={openModal}
+        // openModal={openModal}
         favoriteMounts={favoriteMounts}
-        setFavoriteMounts={setFavoriteMounts}
+        // setFavoriteMounts={setFavoriteMounts}
         toggleFavoriteMount={(id) => toggleFavoriteMount(id)} 
         mount={mount}
         onFavoriteToggle={() => handleFavoriteToggle(mount)}
@@ -31,8 +48,22 @@ const MountDisplay = ({ mounts, openModal, favoriteMounts, toggleFavoriteMount, 
   ));
 
   return (
+    <div> 
+    <NavBar /> 
     <div className="mounts-container">
+
       {mountCards}
+      {isModalOpen && (
+        <Modal
+          closeModal={closeModal}
+          selectedMountId={selectedMountId}
+          mounts={mounts}
+          favoriteMounts={favoriteMounts}
+          toggleFavoriteMount={toggleFavoriteMount}
+          setFavoriteMounts={setFavoriteMounts}
+        />
+      )}
+    </div>
     </div>
   );
 };

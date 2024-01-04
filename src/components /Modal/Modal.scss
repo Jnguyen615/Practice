@@ -1,13 +1,34 @@
-.heart-buttons {
-  position: absolute;
-  // top: 10px; /* Adjust the top position as needed */
-  // right: 10px; /* Adjust the right position as needed */
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  width: 50%
 }
 
-.fa-heart {
-  top: 0
+.modal button {
+  margin-left: auto; 
 }
 
-.fa-heart-0 {
-  top: 1em
+.favorite-icon {
+  margin-right: auto; 
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-image {
+  max-width: 25%; 
+}
+
+.mount-name {
+  opacity: 1
+}
+
+.enhanced-description {
+  color: white 
 }

@@ -1,15 +1,38 @@
 .mount-card {
-  border: 1px solid black;
-  height: 100%;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+  height: 95%;
+  width: 80%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 3px 3px #fcf302;
+  border: 1px solid yellow;
+  background-color: black;
+  transition: transform 0.3s ease-in-out; 
+  transform-origin: center;
 }
 
-h3 {
+.mount-card:hover {
+  transform: rotate(-2deg); 
+}
+
+h3, .mount-description {
   font-size: 1.5em;
-  text-align: center
+  text-align: center;
+  color: #EDE7E3;
+  opacity: 0;
+  transition: opacity 0.5s ease; 
 }
 
-.mount-description {
-  text-align: center;
-  font-size: .7em;
+.mount-card:hover h3, .mount-card:hover .mount-description {
+  opacity: 1; 
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

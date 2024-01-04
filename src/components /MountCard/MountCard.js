@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
+import './MountCard.scss'
 
 const MountCard = ({
   id,
@@ -12,6 +13,7 @@ const MountCard = ({
   favoriteMounts,
   toggleFavoriteMount,
   isFavoritesPage,
+  openModal,
 }) => {
   const isFavorite = favoriteMounts.some((favMount) => favMount.id === id); // Change includes to some
 

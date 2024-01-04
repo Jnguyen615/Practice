@@ -71,7 +71,7 @@ function App() {
   return (
     <main className="App">
       <Header />
-      <NavBar />
+      {/* <NavBar /> */}
       <FFXIVLogo />
       <Routes>
         <Route
