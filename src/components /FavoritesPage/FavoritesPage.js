@@ -71,8 +71,8 @@ const FavoritesPage = ({ favoriteMounts, toggleFavoriteMount }) => {
   return (
     <div className='favorites-page'>
        <button onClick={navigateToMain}>
-        {" "}
-        <i className="fa fa-close"></i>{" "}
+        {/* {" "} */} Back to all Mounts
+        {/* <i className="fa fa-close"></i>{" "} */}
       </button>
       <h1 className='my-mounts-title'>My Mounts!</h1>
       {!displayFavoriteMounts.length && (

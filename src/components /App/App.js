@@ -93,7 +93,7 @@ function App() {
           element={
             <Modal
             openModal={openModal}
-            closeModal={closeModal}
+            // closeModal={closeModal}
             selectedMountId={selectedMountId}
             mounts={mounts}
             toggleFavoriteMount={toggleFavoriteMount}

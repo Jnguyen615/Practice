@@ -38,7 +38,7 @@ const MountCard = ({
         onClick={handleOnClick}
       />
       <p className="mount-description">{description}</p>
-      <FavoriteIcon
+      <FavoriteIcon className='fav-icon'
        id={id}
        isFavorite={isFavorite}
        toggleFavoriteMount={handleToggleFavorite}

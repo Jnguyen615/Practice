@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
-  width: 50%
+  width: 100vw;
+  height: 100vh;
+  background-color: black
 }
 
 .modal button {
@@ -14,11 +15,20 @@
   margin-right: auto; 
 }
 
+.modal-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px
+}
+
 .modal-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: black
 }
 
 .modal-image {
@@ -31,4 +41,8 @@
 
 .enhanced-description {
   color: white 
+}
+
+i.fa-close {
+  transition: color 0.3s ease; 
 }
