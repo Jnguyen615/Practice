@@ -1,9 +1,19 @@
-import './ErrorPage.scss'
+import './ErrorPage.scss';
+import { useNavigate } from 'react-router-dom';
 
 const ErrorPage = () => {
-  return (
-    <h1>Oops! Something went wrong, please go back.</h1>
-  )
-}
+  const navigate = useNavigate()
 
-export default ErrorPage
+  const handleHomeClick = () => {
+    navigate('/')
+  }
+  return (
+    <main className="error-page">
+      <h1>Oops! Something went wrong, please go back.</h1>
+        <button onClick={handleHomeClick}>Home</button>
+      
+    </main>
+  );
+};
+
+export default ErrorPage;

@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import MountCard from '../MountCard/MountCard';
 
+import './FavoritesPage.scss'
+
 const FavoritesPage = ({ favoriteMounts, toggleFavoriteMount }) => {
   const navigate = useNavigate()
   const displayFavoriteMounts = favoriteMounts.map((mount) => (

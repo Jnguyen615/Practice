@@ -14,7 +14,7 @@ const NavBar = () => {
 
   return (
     <div className="nav-side-bar">
-    <button onClick={handleFavoritesClick}>Favorites</button>
+    <button onClick={handleFavoritesClick}>My Mounts</button>
     </div>
   );
 };

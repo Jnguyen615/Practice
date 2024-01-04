@@ -6,7 +6,7 @@ const MountDisplay = ({ mounts, openModal, favoriteMounts, toggleFavoriteMount, 
   const navigate = useNavigate()
   const handleCardClick = (mountId) => {
     openModal(mountId)
-    navigate('/:id')
+    navigate('/mount/:id')
   };
 
   const handleFavoriteToggle = (mount) => {

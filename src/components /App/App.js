@@ -1,32 +1,33 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import './App.css';
+import { useEffect, useState } from 'react';
+import { Routes, Route, useNavigate, Navigate} from 'react-router-dom';
 import { retrieveMinions, retrieveMounts } from '../../Api-call';
-import Header from '../Header/Header'
+import Header from '../Header/Header';
 import NavBar from '../NavBar/NavBar';
-import Modal from "../Modal/Modal";
-import MountDisplay from "../MountDisplay/MountDisplay";
-import ErrorPage from "../ErrorPage/ErrorPage";
-import FavoritesPage from "../FavoritesPage/FavoritesPage";
-import FFXIVLogo from '../FFXIVLogo/FFXIVLogo'
+import Modal from '../Modal/Modal';
+import MountDisplay from '../MountDisplay/MountDisplay';
+import ErrorPage from '../ErrorPage/ErrorPage';
+import FavoritesPage from '../FavoritesPage/FavoritesPage';
+import FFXIVLogo from '../FFXIVLogo/FFXIVLogo';
 
 function App() {
   const [minions, setMinions] = useState([]);
   const [mounts, setMounts] = useState([]);
   const [favoriteMounts, setFavoriteMounts] = useState([]);
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMountId, setSelectedMountId] = useState(null);
-  const navigate = useNavigate()
- 
-  const openModal = (id) => {
+  const navigate = useNavigate();
+
+  const openModal = id => {
     setSelectedMountId(id);
+    console.log("id:", id)
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    navigate('/')
+    navigate('/');
   };
 
   useEffect(() => {
@@ -36,7 +37,7 @@ function App() {
         // console.log("MOUNTS:", data);
       })
       .catch(error => {
-        console.error("Error fetching mounts data:", error);
+        console.error('Error fetching mounts data:', error);
       });
   }, []);
 
@@ -51,74 +52,69 @@ function App() {
   //     });
   // }, []);
 
-  const toggleFavoriteMount = (mount) => {
-    const isFavorited = favoriteMounts.some((favMount) => favMount.id === mount.id);
-  
+  const toggleFavoriteMount = mount => {
+    const isFavorited = favoriteMounts.some(
+      favMount => favMount.id === mount.id,
+    );
+
     if (isFavorited) {
-      const updatedFavorites = favoriteMounts.filter((favMount) => favMount.id !== mount.id);
+      const updatedFavorites = favoriteMounts.filter(
+        favMount => favMount.id !== mount.id,
+      );
       setFavoriteMounts(updatedFavorites);
-      // console.log('Removed from Favorites:', mount);
     } else {
-      setFavoriteMounts((prevFavorites) => [...prevFavorites, mount]);
+      setFavoriteMounts(prevFavorites => [...prevFavorites, mount]);
       console.log('Added to Favorites:', mount);
     }
   };
-  
-  
-  
-    
-  
-  
 
-  
-  
-  
   return (
     <main className="App">
-  <Header />
-  <NavBar />
-  <FFXIVLogo />
-  <Routes>
-    <Route
-      path="/"
-      element={
-        <MountDisplay
-          mounts={mounts}
-          openModal={openModal}
-          favoriteMounts={favoriteMounts}
-          toggleFavoriteMount={toggleFavoriteMount}
+      <Header />
+      <NavBar />
+      <FFXIVLogo />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <MountDisplay
+            mounts={mounts}
+            openModal={openModal}
+            favoriteMounts={favoriteMounts}
+            toggleFavoriteMount={toggleFavoriteMount}
+            />
+          }
         />
-      }
-    />
-    <Route
-      path="/:id"
-      element={
-        <Modal
-          openModal={openModal}
-          closeModal={closeModal}
-          selectedMountId={selectedMountId}
-          mounts={mounts}
-          toggleFavoriteMount={toggleFavoriteMount}
-          favoriteMounts={favoriteMounts}
-          setFavoriteMounts={setFavoriteMounts}
+        <Route
+          exact
+          path="/mount/:id"
+          element={
+            <Modal
+            openModal={openModal}
+            closeModal={closeModal}
+            selectedMountId={selectedMountId}
+            mounts={mounts}
+            toggleFavoriteMount={toggleFavoriteMount}
+            favoriteMounts={favoriteMounts}
+            setFavoriteMounts={setFavoriteMounts}
+            />
+          }
         />
-      }
-    />
-    <Route path="*" element={<ErrorPage />} />
-    <Route
-      path="/favorites"
-      element={
-        <FavoritesPage
-          favoriteMounts={favoriteMounts}
-          setFavoriteMounts={setFavoriteMounts}
-          toggleFavoriteMount={toggleFavoriteMount}
-          
+        <Route
+          exact
+          path="/favorites"
+          element={
+            <FavoritesPage
+            favoriteMounts={favoriteMounts}
+            setFavoriteMounts={setFavoriteMounts}
+            toggleFavoriteMount={toggleFavoriteMount}
+            />
+          }
         />
-      }
-    />
-  </Routes>
-</main>
-
+          <Route path="*" element={<ErrorPage />}/>
+      </Routes>
+    </main>
   );
 }
 
