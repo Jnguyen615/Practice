@@ -5,11 +5,25 @@
 }
 
 .favorites-page {
-  background-color: black
+  background-color: black;
+  height: 100vh;
 }
 
-.my-mounts-title, .no-favorites {
+.my-mounts-title {
+  font-size: 2.5em;
+  text-align: center;
   color: white;
   font-family: 'Righteous', 'sans-serif'
 }
 
+.no-favorites {
+  font-size: 2em;
+  color: white;
+  font-family: 'Righteous', 'sans-serif';
+  text-align: center;
+  margin-top: 15%
+}
+
+.back-to-all-btn {
+  margin-left: 85%
+}

@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate, Navigate} from 'react-router-dom';
 import { retrieveMinions, retrieveMounts } from '../../Api-call';
 import Header from '../Header/Header';
 import NavBar from '../NavBar/NavBar';
-import Modal from '../Modal/Modal';
+import MountCardPage from '../MountCardPage/MountCardPage'
 import MountDisplay from '../MountDisplay/MountDisplay';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import FavoritesPage from '../FavoritesPage/FavoritesPage';
@@ -91,9 +91,9 @@ function App() {
           exact
           path="/mount/:id"
           element={
-            <Modal
+            <MountCardPage
             openModal={openModal}
-            // closeModal={closeModal}
+            closeModal={closeModal}
             selectedMountId={selectedMountId}
             mounts={mounts}
             toggleFavoriteMount={toggleFavoriteMount}

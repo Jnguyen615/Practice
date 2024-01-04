@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 import NavBar from '../NavBar/NavBar'
-import './Modal.scss';
+import './MountCardPage.scss';
 
 const Modal = ({ closeModal, mounts, favoriteMounts, toggleFavoriteMount }) => {
   const { id } = useParams();
