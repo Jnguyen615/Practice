@@ -37,7 +37,7 @@ const MountDisplay = ({ mounts, favoriteMounts, toggleFavoriteMount, setFavorite
         name={mount.name}
         image={mount.image} onClick={() => handleCardClick(mount.id)}
         description={mount.description}
-        // openModal={openModal}
+        isFavoritesPage={false}
         favoriteMounts={favoriteMounts}
         // setFavoriteMounts={setFavoriteMounts}
         toggleFavoriteMount={(id) => toggleFavoriteMount(id)} 

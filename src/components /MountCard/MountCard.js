@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
-import './MountCard.scss'
+import './MountCard.scss';
 
 const MountCard = ({
   id,
@@ -13,9 +13,9 @@ const MountCard = ({
   favoriteMounts,
   toggleFavoriteMount,
   isFavoritesPage,
-  openModal,
+  isOnFavoritesPage
 }) => {
-  const isFavorite = favoriteMounts.some((favMount) => favMount.id === id); // Change includes to some
+  const isFavorite = favoriteMounts.some(favMount => favMount.id === id);
 
   const handleOnClick = () => {
     if (onClick) {
@@ -24,7 +24,7 @@ const MountCard = ({
   };
 
   const handleToggleFavorite = () => {
-    toggleFavoriteMount(mount); // Calls the function to toggle the mount's favorite status
+    toggleFavoriteMount({ id, name, image, description });
   };
 
   return (
@@ -37,14 +37,12 @@ const MountCard = ({
         className="mount-card-image"
         onClick={handleOnClick}
       />
-     <p className='mount-description'>{description}</p>
-      {!isFavoritesPage && ( // Conditionally render the FavoriteIcon except on the FavoritesPage
-        <FavoriteIcon
-          id={id}
-          isFavorite={isFavorite}
-          toggleFavoriteMount={handleToggleFavorite}
-        />
-      )}
+      <p className="mount-description">{description}</p>
+      <FavoriteIcon
+       id={id}
+       isFavorite={isFavorite}
+       toggleFavoriteMount={handleToggleFavorite}
+     />
     </div>
   );
 };

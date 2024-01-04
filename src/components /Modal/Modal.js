@@ -15,7 +15,7 @@ const Modal = ({ closeModal, mounts, favoriteMounts, toggleFavoriteMount }) => {
 
   const handleModalClose = () => {
     closeModal();
-    navigate('/'); // Navigate back to the main display upon closing the modal
+    navigate('/'); 
   };
 
   return (
