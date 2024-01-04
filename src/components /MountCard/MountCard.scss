@@ -1,5 +1,5 @@
 .mount-card {
-  height: 95%;
+  height: 100%;
   width: 80%;
   display:flex;
   flex-direction: column;
@@ -16,12 +16,18 @@
   transform: rotate(-2deg); 
 }
 
-h3, .mount-description {
+.mount-description {
   font-size: 1.5em;
   text-align: center;
   color: #EDE7E3;
   opacity: 0;
   transition: opacity 0.5s ease; 
+}
+
+.mount-name {
+  color: white;
+  font-size: 2em;
+  text-align: center
 }
 
 .mount-card:hover h3, .mount-card:hover .mount-description {

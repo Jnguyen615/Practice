@@ -35,6 +35,7 @@ function App() {
       .then(data => {
         setMounts(data);
         // console.log("MOUNTS:", data);
+        console.log("Data:", data)
       })
       .catch(error => {
         console.error('Error fetching mounts data:', error);
